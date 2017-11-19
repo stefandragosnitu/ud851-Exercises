@@ -24,6 +24,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.datafrominternet.utilities.NetworkUtils;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -50,12 +52,8 @@ public class MainActivity extends AppCompatActivity {
     // DONE (3) Within this method, build the URL with the text from the EditText and set the built URL to the TextView
 
     private void makeGithubSearchQuery() {
-        try {
-            URL queryURL = new URL("http://" + mSearchBoxEditText.getText().toString());
-            mUrlDisplayTextView.setText(queryURL.toString());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        URL url = NetworkUtils.buildUrl(mSearchBoxEditText.getText().toString());
+        mUrlDisplayTextView.setText(url.toString());
     }
 
     @Override
@@ -69,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_search) {
             // DONE (4) Remove the Toast message when the search menu item is clicked
-            Context context = MainActivity.this;
             // DONE (5) Call makeGithubSearchQuery when the search menu item is clicked
             makeGithubSearchQuery();
             return true;
