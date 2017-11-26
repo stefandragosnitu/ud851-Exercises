@@ -27,6 +27,7 @@ import com.example.android.datafrominternet.utilities.NetworkUtils;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         // DONE (2) Override the doInBackground method to perform the query. Return the results. (Hint: You've already written the code to perform the query)
         @Override
         protected String doInBackground(URL... urls) {
-            String githubSearchResults = "";
+            String githubSearchResults = null;
             try {
                 githubSearchResults = NetworkUtils.getResponseFromHttpUrl(urls[0]);
             } catch (IOException e) {
@@ -81,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String githubSearchResults) {
             super.onPostExecute(githubSearchResults);
-            mSearchResultsTextView.setText(githubSearchResults);
+            if (githubSearchResults != null && !githubSearchResults.equals("")) {
+                mSearchResultsTextView.setText(githubSearchResults);
+            }
         }
     }
 
