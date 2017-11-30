@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
      Copyright (C) 2016 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,6 +26,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|start"
         android:fontFamily="monospace"
-        android:textSize="42sp"
-        tools:text="#42" />
+        android:textSize="42sp" />
 </FrameLayout>
